@@ -2,11 +2,15 @@
 import React from 'react'
 
 // My imports
-
+import PokemonList from '../components/PokemonList'
+import CapturedPokemon from '../components/CapturedPokemon'
 
 const Home = () => {
   return (
-    <div>Welcome to the home Page</div>
+    <React.Fragment>
+      <PokemonList />
+      <CapturedPokemon />
+    </React.Fragment>
   )
 }
 
