@@ -25,7 +25,6 @@ function App() {
           toggleTheme={toggleTheme}
           lightThemeActivated={lightThemeActivated}
         />
-        hmm
         <MainContentContainerStyled maxWidth='md'>
           <Routes />
         </MainContentContainerStyled>
