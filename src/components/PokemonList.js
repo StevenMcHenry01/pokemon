@@ -1,23 +1,44 @@
 // 3rd party imports
-import React, { useState } from 'react'
+import React from 'react'
 
 // My imports
+import { usePokemonState } from '../contexts/PokemonContext'
 
 const PokemonList = () => {
-  const [pokemons] = useState([
-    { id: 1, name: 'Bulbasaur' },
-    { id: 2, name: 'Charmander' },
-    { id: 3, name: 'Squirtle' },
-  ])
+  const {
+    pokemons,
+    setPokemons,
+    capturedPokemons,
+    setCapturedPokemons,
+   } = usePokemonState()
+
+  const removePokemonFromList = (removedPokemon) => {
+    console.log(pokemons)
+    
+    return pokemons.filter((pokemon) => pokemon !== removedPokemon)
+  }
+
+  const capture = (pokemon) => {
+    // add to captured list
+    setCapturedPokemons([...capturedPokemons, pokemon])
+    // remove from available list
+    setPokemons(removePokemonFromList(pokemon))
+    console.log(pokemons)
+  }
+
+  console.log(pokemons)
 
   return (
-    <div className='pokemons-list'>
-      <h2>Pokemons List</h2>
+    <div>
+      <h2>Pokemon List</h2>
 
-      {pokemons.map((pokemon) => (
+      {pokemons && pokemons.map((pokemon) => (
         <div key={`${pokemon.id}-${pokemon.name}`}>
-          <p>{pokemon.id}</p>
-          <p>{pokemon.name}</p>
+          <div>
+            <span>{pokemon.name}</span>
+            <span> {pokemon.id}</span>
+            <button onClick={()=>capture(pokemon)}>+</button>
+          </div>
         </div>
       ))}
     </div>
@@ -26,4 +47,4 @@ const PokemonList = () => {
 
 export default PokemonList
 
-// STYLING<div>
+// STYLING

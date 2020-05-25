@@ -1,13 +1,19 @@
-import React, { useState } from 'react'
+import React from 'react'
+import {usePokemonState} from '../contexts/PokemonContext'
 
 const CapturedPokemon = () => {
-  const [pokemons] = useState([])
+  const {
+    pokemons,
+    setPokemons,
+    capturedPokemons,
+    setCapturedPokemons,
+  } = usePokemonState()
 
   return (
     <div className='pokedex'>
       <h2>Captured Pokemons</h2>
 
-      {pokemons.map((pokemon) => (
+      {capturedPokemons.map((pokemon) => (
         <div key={`${pokemon.id}-${pokemon.name}`}>
           <p>{pokemon.id}</p>
           <p>{pokemon.name}</p>
